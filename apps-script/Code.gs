@@ -4,7 +4,7 @@
  * и дописывает строку в лист leads таблицы «Kadr35 — Bookings».
  *
  * Установка:
- * 1. Таблица «Kadr35 — Bookings» → Расширения → Apps Script → вставить этот файл.
+ * 1. script.google.com → Новый проект «Kadr35 — приёмник заявок» → вставить этот файл.
  * 2. Настройки проекта → Часовой пояс: (GMT+03:00) Москва.
  * 3. Выполнить функцию setupSheet() один раз (создаст листы, заголовки и проверки).
  * 4. Развернуть → Новое развертывание → Веб-приложение:
@@ -13,7 +13,7 @@
 
 // Идентификатор таблицы (из адреса docs.google.com/spreadsheets/d/<ID>/edit).
 // Если пусто — используется таблица, к которой привязан скрипт.
-var SPREADSHEET_ID = '';
+var SPREADSHEET_ID = '1Bzp6WCqNPrF_MocAPSfABBoY0GPIYJEJKyGO_6qOMcc';
 
 var SHEET_LEADS = 'leads';
 var HEADERS = ['request_id', 'created_at', 'name', 'phone', 'email', 'hall', 'slot', 'hours',
