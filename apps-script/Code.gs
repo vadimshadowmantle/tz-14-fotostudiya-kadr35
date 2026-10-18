@@ -1,92 +1,98 @@
 /**
  * Кадр 35 — приёмник заявок с сайта (раздел 6.2 ТЗ).
- * Веб-приложение принимает POST с JSON из js/form.js, проверяет данные
- * и дописывает строку в лист leads таблицы «Kadr35 — Bookings».
+ * За основу взят приёмник из темы 7 курса (materials/tema-07-google-sheets-leads/Code.gs):
+ * блокировка, поиск повтора через TextFinder, проверка заголовков листа, защита ячеек от формул.
+ * Добавлено под ТЗ-14: телефон, зал, начало брони, часы, utm_content и ответ на fetch из js/form.js.
  *
  * Установка:
  * 1. script.google.com → Новый проект «Kadr35 — приёмник заявок» → вставить этот файл.
  * 2. Настройки проекта → Часовой пояс: (GMT+03:00) Москва.
- * 3. Выполнить функцию setupSheet() один раз (создаст листы, заголовки и проверки).
+ * 3. Выполнить функцию setupSheet() один раз (заголовки, выпадающие списки, подсветка).
  * 4. Развернуть → Новое развертывание → Веб-приложение:
  *    «Запуск от имени: я», «Доступ: все». Ссылку /exec вставить в ENDPOINT в js/form.js.
  */
 
-// Идентификатор таблицы (из адреса docs.google.com/spreadsheets/d/<ID>/edit).
-// Если пусто — используется таблица, к которой привязан скрипт.
-var SPREADSHEET_ID = '1Bzp6WCqNPrF_MocAPSfABBoY0GPIYJEJKyGO_6qOMcc';
+// ID таблицы «Kadr35 — Bookings» — между /d/ и /edit в её адресе.
+const SPREADSHEET_ID = '1Bzp6WCqNPrF_MocAPSfABBoY0GPIYJEJKyGO_6qOMcc';
 
-var SHEET_LEADS = 'leads';
-var HEADERS = ['request_id', 'created_at', 'name', 'phone', 'email', 'hall', 'slot', 'hours',
+const SHEET_LEADS = 'leads';
+const HEADERS = ['request_id', 'created_at', 'name', 'phone', 'email', 'hall', 'slot', 'hours',
   'utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'status'];
-var HALLS = ['loft', 'cyclorama', 'newyear'];
-var STATUSES = ['new', 'confirmed', 'prepaid', 'done', 'cancelled'];
-var UTM_DEFAULTS = { utm_source: 'direct', utm_medium: 'none', utm_campaign: 'not_set', utm_content: 'not_set' };
-var MAX_LEN = 200;
+const HALLS = ['loft', 'cyclorama', 'newyear'];
+const STATUSES = ['new', 'confirmed', 'prepaid', 'done', 'cancelled'];
+const UTM_DEFAULTS = {utm_source: 'direct', utm_medium: 'none', utm_campaign: 'not_set', utm_content: 'not_set'};
+const MAX_LEN = 200;
 
 function getBook_() {
-  return SPREADSHEET_ID ? SpreadsheetApp.openById(SPREADSHEET_ID) : SpreadsheetApp.getActiveSpreadsheet();
+  return SpreadsheetApp.openById(SPREADSHEET_ID);
 }
 
-function json_(obj) {
-  return ContentService.createTextOutput(JSON.stringify(obj)).setMimeType(ContentService.MimeType.JSON);
+function jsonResponse(data) {
+  return ContentService.createTextOutput(JSON.stringify(data))
+    .setMimeType(ContentService.MimeType.JSON);
+}
+
+function textCell(value) {
+  // Не даём введённому тексту превратиться в формулу Google Sheets.
+  return /^[=+@-]/.test(value) ? "'" + value : value;
 }
 
 /** Проверка, что приёмник опубликован: открыть ссылку /exec в браузере. */
 function doGet() {
-  return json_({ ok: true, service: 'kadr35-bookings' });
+  return jsonResponse({ok: true, service: 'kadr35-bookings'});
 }
 
-/** Приём заявки. Возвращает {"ok": true, "request_id": …} или {"ok": false, "error": "…"}. */
+/**
+ * Приём заявки. Сайт отправляет JSON через fetch (раздел 6.3 ТЗ),
+ * обычная HTML-форма из темы 7 — поля формы; принимаются оба варианта.
+ * Ответ: {"ok": true, "request_id": …} или {"ok": false, "error": "…"}.
+ */
 function doPost(e) {
-  var data;
-  try {
-    data = JSON.parse(e.postData.contents);
-  } catch (err) {
-    return json_({ ok: false, error: 'Некорректный JSON' });
-  }
-
-  var check = validate_(data);
-  if (check.error) return json_({ ok: false, error: check.error });
-  var lead = check.lead;
-
-  // Блокировка, чтобы две одновременные заявки не записались с одинаковым request_id
-  var lock = LockService.getScriptLock();
-  try {
-    lock.waitLock(10000);
-  } catch (err) {
-    return json_({ ok: false, error: 'Сервер занят, попробуйте ещё раз' });
-  }
-  try {
-    var sheet = getBook_().getSheetByName(SHEET_LEADS);
-    if (!sheet) return json_({ ok: false, error: 'Лист leads не найден' });
-
-    // Повтор: заявка с таким request_id уже есть — вторую строку не создаём
-    var last = sheet.getLastRow();
-    if (last > 1) {
-      var ids = sheet.getRange(2, 1, last - 1, 1).getValues();
-      for (var i = 0; i < ids.length; i++) {
-        if (String(ids[i][0]) === lead.request_id) {
-          return json_({ ok: false, error: 'Заявка с таким request_id уже принята' });
-        }
-      }
+  let data = (e && e.parameter) || {};
+  if (e && e.postData && e.postData.type !== 'application/x-www-form-urlencoded') {
+    try {
+      data = JSON.parse(e.postData.contents);
+    } catch (err) {
+      return jsonResponse({ok: false, error: 'invalid_json'});
     }
+  }
+
+  const check = validate_(data);
+  if (check.error) return jsonResponse({ok: false, error: check.error});
+  const lead = check.lead;
+
+  // Проверка ID и запись выполняются под одной блокировкой.
+  const lock = LockService.getScriptLock();
+  if (!lock.tryLock(10000)) return jsonResponse({ok: false, error: 'busy_retry'});
+  try {
+    const sheet = getBook_().getSheetByName(SHEET_LEADS);
+    if (!sheet || sheet.getRange(1, 1, 1, HEADERS.length).getValues()[0].join('|') !== HEADERS.join('|')) {
+      return jsonResponse({ok: false, error: 'invalid_sheet_schema'});
+    }
+    const duplicate = sheet.getRange('A:A').createTextFinder(lead.request_id)
+      .matchEntireCell(true).matchCase(false).useRegularExpression(false).findNext();
+    if (duplicate) return jsonResponse({ok: false, error: 'duplicate_request_id'});
 
     sheet.appendRow([
       lead.request_id,
-      new Date(),           // created_at ставит приёмник
-      lead.name,
-      "'" + lead.phone,     // апостроф — чтобы таблица не превратила телефон в число
-      lead.email,
+      new Date(),                 // created_at ставит приёмник
+      textCell(lead.name),
+      "'" + lead.phone,           // апостроф — чтобы таблица не превратила телефон в число
+      textCell(lead.email),
       lead.hall,
       lead.slot,
       lead.hours,
-      lead.utm_source,
-      lead.utm_medium,
-      lead.utm_campaign,
-      lead.utm_content,
-      'new'                 // status из браузера игнорируется
+      textCell(lead.utm_source),
+      textCell(lead.utm_medium),
+      textCell(lead.utm_campaign),
+      textCell(lead.utm_content),
+      'new'                       // присланный клиентом status игнорируется
     ]);
-    return json_({ ok: true, request_id: lead.request_id });
+    SpreadsheetApp.flush();
+    return jsonResponse({ok: true, request_id: lead.request_id});
+  } catch (error) {
+    // Не возвращаем клиенту детали таблицы и содержимое заявки.
+    return jsonResponse({ok: false, error: 'storage_error'});
   } finally {
     lock.releaseLock();
   }
@@ -152,7 +158,7 @@ function validate_(d) {
 }
 
 /**
- * Один раз: заголовки, проверки данных, условное форматирование и лист crm_import.
+ * Один раз: заголовки, проверки данных и условное форматирование листа leads.
  * Запуск: выбрать setupSheet в списке функций → «Выполнить».
  */
 function setupSheet() {
@@ -186,7 +192,6 @@ function setupSheet() {
   ];
   sheet.setConditionalFormatRules(rules);
 
-  setupCrmImport_(book);
   SpreadsheetApp.flush();
 }
 
@@ -210,33 +215,4 @@ function localize_(formula, book) {
     out += c;
   }
   return out;
-}
-
-/** Лист crm_import для импорта в HubSpot (раздел 6.4 ТЗ). */
-function setupCrmImport_(book) {
-  var crm = book.getSheetByName('crm_import') || book.insertSheet('crm_import');
-  crm.clear();
-  var headers = ['request_id', 'first_name', 'last_name', 'phone', 'email', 'hall', 'slot', 'hours',
-    'utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'created_at', 'deal_stage', 'deal_name'];
-  crm.getRange(1, 1, 1, headers.length).setValues([headers]).setFontWeight('bold');
-  crm.setFrozenRows(1);
-
-  // Формулы в английском синтаксисе; localize_() переводит их под локаль таблицы
-  var stages = '{"new","New lead";"confirmed","Confirmed";"prepaid","Prepaid";"done","Closed won";"cancelled","Closed lost"}';
-  var halls = '{"loft","Лофт";"cyclorama","Циклорама";"newyear","Новогодний зал"}';
-  var f = {
-    A2: '=ARRAYFORMULA(IF(leads!A2:A="","",leads!A2:A))',
-    B2: '=ARRAYFORMULA(IF(leads!A2:A="","",IFERROR(INDEX(SPLIT(TRIM(leads!C2:C)," "),0,1),"")))',
-    C2: '=ARRAYFORMULA(IF(leads!A2:A="","",IFERROR(REGEXREPLACE(TRIM(leads!C2:C),"^\\S+\\s*",""),"")))',
-    D2: '=ARRAYFORMULA(IF(leads!A2:A="","","+7"&RIGHT(REGEXREPLACE(TO_TEXT(leads!D2:D),"\\D",""),10)))',
-    E2: '=ARRAYFORMULA(IF(leads!A2:A="","",TRIM(leads!E2:E)))',
-    F2: '=ARRAYFORMULA(IF(leads!A2:A="","",leads!F2:F))',
-    G2: '=ARRAYFORMULA(IF(leads!A2:A="","",TEXT(leads!G2:G,"yyyy-mm-dd hh:mm")))',
-    H2: '=ARRAYFORMULA(IF(leads!A2:A="","",leads!H2:H))',
-    I2: '=ARRAYFORMULA(IF(leads!A2:A="","",leads!I2:L))',
-    M2: '=ARRAYFORMULA(IF(leads!A2:A="","",TEXT(leads!B2:B,"yyyy-mm-dd hh:mm")))',
-    N2: '=ARRAYFORMULA(IF(leads!A2:A="","",IFERROR(VLOOKUP(leads!M2:M,' + stages + ',2,FALSE),"New lead")))',
-    O2: '=ARRAYFORMULA(IF(leads!A2:A="","",TRIM(leads!C2:C)&" — "&IFERROR(VLOOKUP(leads!F2:F,' + halls + ',2,FALSE),leads!F2:F)&" — "&TEXT(leads!G2:G,"dd.mm.yyyy hh:mm")))'
-  };
-  Object.keys(f).forEach(function (cell) { crm.getRange(cell).setFormula(localize_(f[cell], book)); });
 }

@@ -183,9 +183,10 @@
       })
       .catch(function (err) {
         track('form_error', { field_name: 'form', error_type: 'server' });
+        // Служебные коды приёмника (duplicate_request_id, busy_retry…) посетителю не показываем
+        var reason = err && err.message && !/^[a-z_]+$/.test(err.message) ? ': ' + err.message : '';
         document.getElementById('form-status').textContent =
-          'Не удалось отправить заявку' + (err && err.message && err.message !== 'server' ? ': ' + err.message : '') +
-          '. Попробуйте ещё раз или позвоните +7 (900) 435-35-35.';
+          'Не удалось отправить заявку' + reason + '. Попробуйте ещё раз или позвоните +7 (900) 435-35-35.';
         submitBtn.disabled = false;
         submitBtn.textContent = 'Забронировать';
       });
