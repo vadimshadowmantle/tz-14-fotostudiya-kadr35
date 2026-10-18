@@ -551,7 +551,7 @@ a.card:hover { box-shadow: 0 10px 32px rgba(30, 30, 36, .14); color: inherit; }
 .form__status:empty { display: none; }
 
 .contacts-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
-.contacts-list a { font-weight: 600; }
+.contacts-list a { font-weight: 600; display: inline-flex; align-items: center; min-height: 44px; }
 .messengers { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 16px; }
 
 /* Спасибо и 404 */
