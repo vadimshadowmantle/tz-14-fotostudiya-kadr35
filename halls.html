@@ -27,7 +27,9 @@
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Unbounded:wght@600;700&display=swap">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Unbounded:wght@600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Unbounded:wght@600;700&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Unbounded:wght@600;700&display=swap"></noscript>
   <link rel="stylesheet" href="css/style.css">
   <script src="js/analytics.js" defer></script>
   <script src="js/form.js" defer></script>
@@ -66,9 +68,9 @@
     <div class="container">
     <article class="hall" id="loft" data-event="hall_view" data-hall-id="loft">
       <div class="hall__photos">
-          <img src="img/hall-loft-1.webp" alt="Зал «Лофт», вид 1" width="1200" height="800" decoding="async">
-          <img src="img/hall-loft-2.webp" alt="Зал «Лофт», вид 2" width="1200" height="800" loading="lazy" decoding="async">
-          <img src="img/hall-loft-3.webp" alt="Зал «Лофт», вид 3" width="1200" height="800" loading="lazy" decoding="async">
+          <img src="img/hall-loft-1.webp" srcset="img/hall-loft-1-600.webp 600w, img/hall-loft-1.webp 1200w" sizes="(max-width: 640px) 100vw, 50vw" alt="Зал «Лофт», вид 1" width="1200" height="800" decoding="async">
+          <img src="img/hall-loft-2.webp" srcset="img/hall-loft-2-600.webp 600w, img/hall-loft-2.webp 1200w" sizes="(max-width: 640px) 100vw, 50vw" alt="Зал «Лофт», вид 2" width="1200" height="800" loading="lazy" decoding="async">
+          <img src="img/hall-loft-3.webp" srcset="img/hall-loft-3-600.webp 600w, img/hall-loft-3.webp 1200w" sizes="(max-width: 640px) 100vw, 50vw" alt="Зал «Лофт», вид 3" width="1200" height="800" loading="lazy" decoding="async">
       </div>
       <div>
         <span class="tag">круглый год</span>
@@ -89,9 +91,9 @@
     </article>
     <article class="hall" id="cyclorama" data-event="hall_view" data-hall-id="cyclorama">
       <div class="hall__photos">
-          <img src="img/hall-cyclorama-1.webp" alt="Зал «Циклорама», вид 1" width="1200" height="800" loading="lazy" decoding="async">
-          <img src="img/hall-cyclorama-2.webp" alt="Зал «Циклорама», вид 2" width="1200" height="800" loading="lazy" decoding="async">
-          <img src="img/hall-cyclorama-3.webp" alt="Зал «Циклорама», вид 3" width="1200" height="800" loading="lazy" decoding="async">
+          <img src="img/hall-cyclorama-1.webp" srcset="img/hall-cyclorama-1-600.webp 600w, img/hall-cyclorama-1.webp 1200w" sizes="(max-width: 640px) 100vw, 50vw" alt="Зал «Циклорама», вид 1" width="1200" height="800" loading="lazy" decoding="async">
+          <img src="img/hall-cyclorama-2.webp" srcset="img/hall-cyclorama-2-600.webp 600w, img/hall-cyclorama-2.webp 1200w" sizes="(max-width: 640px) 100vw, 50vw" alt="Зал «Циклорама», вид 2" width="1200" height="800" loading="lazy" decoding="async">
+          <img src="img/hall-cyclorama-3.webp" srcset="img/hall-cyclorama-3-600.webp 600w, img/hall-cyclorama-3.webp 1200w" sizes="(max-width: 640px) 100vw, 50vw" alt="Зал «Циклорама», вид 3" width="1200" height="800" loading="lazy" decoding="async">
       </div>
       <div>
         <span class="tag">круглый год</span>
@@ -112,9 +114,9 @@
     </article>
     <article class="hall" id="newyear" data-event="hall_view" data-hall-id="newyear">
       <div class="hall__photos">
-          <img src="img/hall-newyear-1.webp" alt="Зал «Новогодний зал», вид 1" width="1200" height="800" loading="lazy" decoding="async">
-          <img src="img/hall-newyear-2.webp" alt="Зал «Новогодний зал», вид 2" width="1200" height="800" loading="lazy" decoding="async">
-          <img src="img/hall-newyear-3.webp" alt="Зал «Новогодний зал», вид 3" width="1200" height="800" loading="lazy" decoding="async">
+          <img src="img/hall-newyear-1.webp" srcset="img/hall-newyear-1-600.webp 600w, img/hall-newyear-1.webp 1200w" sizes="(max-width: 640px) 100vw, 50vw" alt="Зал «Новогодний зал», вид 1" width="1200" height="800" loading="lazy" decoding="async">
+          <img src="img/hall-newyear-2.webp" srcset="img/hall-newyear-2-600.webp 600w, img/hall-newyear-2.webp 1200w" sizes="(max-width: 640px) 100vw, 50vw" alt="Зал «Новогодний зал», вид 2" width="1200" height="800" loading="lazy" decoding="async">
+          <img src="img/hall-newyear-3.webp" srcset="img/hall-newyear-3-600.webp 600w, img/hall-newyear-3.webp 1200w" sizes="(max-width: 640px) 100vw, 50vw" alt="Зал «Новогодний зал», вид 3" width="1200" height="800" loading="lazy" decoding="async">
       </div>
       <div>
         <span class="tag tag--accent">1 декабря — 10 января</span>

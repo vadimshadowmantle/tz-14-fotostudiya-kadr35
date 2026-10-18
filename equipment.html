@@ -27,7 +27,9 @@
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Unbounded:wght@600;700&display=swap">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Unbounded:wght@600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Unbounded:wght@600;700&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Unbounded:wght@600;700&display=swap"></noscript>
   <link rel="stylesheet" href="css/style.css">
   <script src="js/analytics.js" defer></script>
   <script src="js/form.js" defer></script>
@@ -76,7 +78,7 @@
             <tr><td>Базовый свет и реквизит зала</td><td>входит в аренду</td></tr>
           </tbody>
         </table>
-        <img class="card__img" style="border-radius:16px;margin-top:24px" src="img/equipment-studio.webp" alt="Импульсный свет и софтбоксы в зале фотостудии" width="1200" height="800" loading="lazy" decoding="async">
+        <img class="card__img" style="border-radius:16px;margin-top:24px" src="img/equipment-studio.webp" srcset="img/equipment-studio-600.webp 600w, img/equipment-studio.webp 1200w" sizes="(max-width: 640px) 100vw, (max-width: 900px) 50vw, 380px" alt="Импульсный свет и софтбоксы в зале фотостудии" width="1200" height="800" loading="lazy" decoding="async">
       </div>
 
       <div>

@@ -27,7 +27,10 @@
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Unbounded:wght@600;700&display=swap">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Unbounded:wght@600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Unbounded:wght@600;700&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Unbounded:wght@600;700&display=swap"></noscript>
+  <link rel="preload" as="image" href="img/hall-newyear-2.webp" imagesrcset="img/hall-newyear-2-600.webp 600w, img/hall-newyear-2.webp 1200w" imagesizes="100vw" fetchpriority="high">
   <link rel="stylesheet" href="css/style.css">
   <script src="js/analytics.js" defer></script>
   <script src="js/form.js" defer></script>
@@ -57,7 +60,7 @@
 </header>
 <main id="main">
   <section class="hero">
-    <img class="hero__bg" src="img/hall-newyear-2.webp" alt="" width="1200" height="800" fetchpriority="high">
+    <img class="hero__bg" src="img/hall-newyear-2.webp" srcset="img/hall-newyear-2-600.webp 600w, img/hall-newyear-2.webp 1200w" sizes="100vw" alt="" width="1200" height="800" fetchpriority="high">
     <div class="hero__inner">
       <span class="hero__badge">Даты с 1 декабря 2026 по 10 января 2027</span>
       <h1>Новогодний зал: бронирование открыто</h1>
@@ -82,7 +85,7 @@
       </div>
       <div class="grid grid--3">
         <a class="card" href="halls.html#loft" data-event="hall_view" data-hall-id="loft">
-          <img class="card__img" src="img/hall-loft-1.webp" alt="Зал «Лофт» фотостудии «Кадр 35»" width="1200" height="800" loading="lazy" decoding="async">
+          <img class="card__img" src="img/hall-loft-1.webp" srcset="img/hall-loft-1-600.webp 600w, img/hall-loft-1.webp 1200w" sizes="(max-width: 640px) 100vw, (max-width: 900px) 50vw, 380px" alt="Зал «Лофт» фотостудии «Кадр 35»" width="1200" height="800" loading="lazy" decoding="async">
           <div class="card__body">
             <span class="tag">круглый год</span>
             <h3>Лофт</h3>
@@ -91,7 +94,7 @@
           </div>
         </a>
         <a class="card" href="halls.html#cyclorama" data-event="hall_view" data-hall-id="cyclorama">
-          <img class="card__img" src="img/hall-cyclorama-1.webp" alt="Зал «Циклорама» фотостудии «Кадр 35»" width="1200" height="800" loading="lazy" decoding="async">
+          <img class="card__img" src="img/hall-cyclorama-1.webp" srcset="img/hall-cyclorama-1-600.webp 600w, img/hall-cyclorama-1.webp 1200w" sizes="(max-width: 640px) 100vw, (max-width: 900px) 50vw, 380px" alt="Зал «Циклорама» фотостудии «Кадр 35»" width="1200" height="800" loading="lazy" decoding="async">
           <div class="card__body">
             <span class="tag">круглый год</span>
             <h3>Циклорама</h3>
@@ -100,7 +103,7 @@
           </div>
         </a>
         <a class="card" href="halls.html#newyear" data-event="hall_view" data-hall-id="newyear">
-          <img class="card__img" src="img/hall-newyear-1.webp" alt="Зал «Новогодний зал» фотостудии «Кадр 35»" width="1200" height="800" loading="lazy" decoding="async">
+          <img class="card__img" src="img/hall-newyear-1.webp" srcset="img/hall-newyear-1-600.webp 600w, img/hall-newyear-1.webp 1200w" sizes="(max-width: 640px) 100vw, (max-width: 900px) 50vw, 380px" alt="Зал «Новогодний зал» фотостудии «Кадр 35»" width="1200" height="800" loading="lazy" decoding="async">
           <div class="card__body">
             <span class="tag tag--accent">с 1 декабря</span>
             <h3>Новогодний зал</h3>
@@ -156,31 +159,31 @@
       </div>
       <div class="gallery">
         <button class="gallery__item" type="button" data-event="gallery_view" data-hall-id="loft" data-photo-index="1" data-full="img/hall-loft-2.webp">
-          <img src="img/hall-loft-2.webp" alt="Зал «Лофт»: кирпичные стены, рабочий стол и большие окна" width="1200" height="800" loading="lazy" decoding="async">
+          <img src="img/hall-loft-2.webp" srcset="img/hall-loft-2-600.webp 600w, img/hall-loft-2.webp 1200w" sizes="(max-width: 640px) 100vw, 50vw" alt="Зал «Лофт»: кирпичные стены, рабочий стол и большие окна" width="1200" height="800" loading="lazy" decoding="async">
         </button>
         <button class="gallery__item" type="button" data-event="gallery_view" data-hall-id="cyclorama" data-photo-index="2" data-full="img/hall-cyclorama-1.webp">
-          <img src="img/hall-cyclorama-1.webp" alt="Зал «Циклорама»: белый фон и два источника света с зонтами" width="1200" height="800" loading="lazy" decoding="async">
+          <img src="img/hall-cyclorama-1.webp" srcset="img/hall-cyclorama-1-600.webp 600w, img/hall-cyclorama-1.webp 1200w" sizes="(max-width: 640px) 100vw, 50vw" alt="Зал «Циклорама»: белый фон и два источника света с зонтами" width="1200" height="800" loading="lazy" decoding="async">
         </button>
         <button class="gallery__item" type="button" data-event="gallery_view" data-hall-id="newyear" data-photo-index="3" data-full="img/hall-newyear-1.webp">
-          <img src="img/hall-newyear-1.webp" alt="Новогодний зал: ёлка, кресло и красный ковёр" width="1200" height="800" loading="lazy" decoding="async">
+          <img src="img/hall-newyear-1.webp" srcset="img/hall-newyear-1-600.webp 600w, img/hall-newyear-1.webp 1200w" sizes="(max-width: 640px) 100vw, 50vw" alt="Новогодний зал: ёлка, кресло и красный ковёр" width="1200" height="800" loading="lazy" decoding="async">
         </button>
         <button class="gallery__item" type="button" data-event="gallery_view" data-hall-id="cyclorama" data-photo-index="4" data-full="img/gallery-family-1.webp">
-          <img src="img/gallery-family-1.webp" alt="Семейный портрет с малышом на светлом фоне" width="1200" height="800" loading="lazy" decoding="async">
+          <img src="img/gallery-family-1.webp" srcset="img/gallery-family-1-600.webp 600w, img/gallery-family-1.webp 1200w" sizes="(max-width: 640px) 100vw, 50vw" alt="Семейный портрет с малышом на светлом фоне" width="1200" height="800" loading="lazy" decoding="async">
         </button>
         <button class="gallery__item" type="button" data-event="gallery_view" data-hall-id="cyclorama" data-photo-index="5" data-full="img/gallery-product.webp">
-          <img src="img/gallery-product.webp" alt="Предметная съёмка: букет между двумя софтбоксами" width="1200" height="800" loading="lazy" decoding="async">
+          <img src="img/gallery-product.webp" srcset="img/gallery-product-600.webp 600w, img/gallery-product.webp 1200w" sizes="(max-width: 640px) 100vw, 50vw" alt="Предметная съёмка: букет между двумя софтбоксами" width="1200" height="800" loading="lazy" decoding="async">
         </button>
         <button class="gallery__item" type="button" data-event="gallery_view" data-hall-id="loft" data-photo-index="6" data-full="img/gallery-portrait.webp">
-          <img src="img/gallery-portrait.webp" alt="Портрет девушки в кресле у стены лофта" width="1200" height="800" loading="lazy" decoding="async">
+          <img src="img/gallery-portrait.webp" srcset="img/gallery-portrait-600.webp 600w, img/gallery-portrait.webp 1200w" sizes="(max-width: 640px) 100vw, 50vw" alt="Портрет девушки в кресле у стены лофта" width="1200" height="800" loading="lazy" decoding="async">
         </button>
         <button class="gallery__item" type="button" data-event="gallery_view" data-hall-id="newyear" data-photo-index="7" data-full="img/gallery-content.webp">
-          <img src="img/gallery-content.webp" alt="Контент для соцсетей на фоне новогодней мишуры" width="1200" height="800" loading="lazy" decoding="async">
+          <img src="img/gallery-content.webp" srcset="img/gallery-content-600.webp 600w, img/gallery-content.webp 1200w" sizes="(max-width: 640px) 100vw, 50vw" alt="Контент для соцсетей на фоне новогодней мишуры" width="1200" height="800" loading="lazy" decoding="async">
         </button>
         <button class="gallery__item" type="button" data-event="gallery_view" data-hall-id="newyear" data-photo-index="8" data-full="img/hall-newyear-2.webp">
-          <img src="img/hall-newyear-2.webp" alt="Праздничный портрет у ёлок со свечами" width="1200" height="800" loading="lazy" decoding="async">
+          <img src="img/hall-newyear-2.webp" srcset="img/hall-newyear-2-600.webp 600w, img/hall-newyear-2.webp 1200w" sizes="(max-width: 640px) 100vw, 50vw" alt="Праздничный портрет у ёлок со свечами" width="1200" height="800" loading="lazy" decoding="async">
         </button>
         <button class="gallery__item" type="button" data-event="gallery_view" data-hall-id="cyclorama" data-photo-index="9" data-full="img/gallery-backstage.webp">
-          <img src="img/gallery-backstage.webp" alt="Фотограф настраивает свет перед съёмкой на циклораме" width="1200" height="800" loading="lazy" decoding="async">
+          <img src="img/gallery-backstage.webp" srcset="img/gallery-backstage-600.webp 600w, img/gallery-backstage.webp 1200w" sizes="(max-width: 640px) 100vw, 50vw" alt="Фотограф настраивает свет перед съёмкой на циклораме" width="1200" height="800" loading="lazy" decoding="async">
         </button>
       </div>
     </div>
