@@ -25,7 +25,7 @@
 
 | Часть | Результат |
 |---|---|
-| Сайт | 9 страниц и 404, статический HTML/CSS/JS без сборки, Vercel с автодеплоем из `main`, Lighthouse: ___ / ___ / ___ |
+| Сайт | 9 страниц и 404, статический HTML/CSS/JS без сборки, Vercel с автодеплоем из `main`, Lighthouse (мобильный): Performance 83 / Accessibility 100 / SEO 100 |
 | GA4 | 20 событий (6 автоматических, 14 своих), 7 пользовательских параметров, ключевые: `generate_lead`, `contact_click`, `messenger_click` |
 | UTM | 12 ссылок в реестре (лист `utm`, `docs/utm.csv`, полная ссылка — формулой СЦЕПИТЬ), QR-код `docs/qr-u-12.png` на афише `docs/afisha.pdf`; публикации — _этап 4_ |
 | Заявки | форма → Apps Script → лист `leads`: проверка полей, защита от повторов по `request_id`, статус брони `new → confirmed → prepaid → done / cancelled` |
