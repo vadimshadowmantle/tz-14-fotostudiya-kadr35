@@ -205,7 +205,7 @@ function localize_(formula, book) {
     if (!inQuotes) {
       if (c === '{') braces++;
       if (c === '}') braces--;
-      if (c === ',') c = braces > 0 ? '\' : ';';
+      if (c === ',') c = braces > 0 ? '\\' : ';';
     }
     out += c;
   }
