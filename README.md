@@ -27,7 +27,7 @@
 |---|---|
 | Сайт | 9 страниц и 404, статический HTML/CSS/JS без сборки, Vercel с автодеплоем из `main`, Lighthouse: ___ / ___ / ___ |
 | GA4 | 20 событий (6 автоматических, 14 своих), 7 пользовательских параметров, ключевые: `generate_lead`, `contact_click`, `messenger_click` |
-| UTM | реестр `docs/utm.csv` — _этап 4_ |
+| UTM | 12 ссылок в реестре (лист `utm`, `docs/utm.csv`, полная ссылка — формулой СЦЕПИТЬ), QR-код `docs/qr-u-12.png` на афише `docs/afisha.pdf`; публикации — _этап 4_ |
 | Заявки | форма → Apps Script → лист `leads`: проверка полей, защита от повторов по `request_id`, статус брони `new → confirmed → prepaid → done / cancelled` |
 | Instagram | ManyChat, две ветки: `ИДЕИ` и `СЕМЬЯ` — _этап 4_ |
 | Отчёты | Reports, Explore, воронка, путь, дашборд DataLens — _этап 5_ |
