@@ -140,6 +140,15 @@
       return;
     }
 
+    // Расширенная статистика GA4 не видит отправку формы, если её отменили preventDefault()
+    // ради fetch, поэтому form_submit отправляем сами с теми же параметрами, что у автоматического
+    track('form_submit', {
+      form_id: form.id,
+      form_name: 'booking',
+      form_destination: 'script.google.com',
+      form_submit_text: submitBtn.textContent.trim()
+    });
+
     fillUtm();
     var data = {
       request_id: f.request_id.value,

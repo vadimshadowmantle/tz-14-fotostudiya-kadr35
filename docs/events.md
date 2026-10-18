@@ -11,8 +11,8 @@
 | 3 | `click` | авто | расширенная статистика (ссылки Telegram, WhatsApp, соцсети) | `link_url` = `https://t.me/kadr35_admin`, `outbound` = true |
 | 4 | `file_download` | авто | расширенная статистика, ссылки «Схема зала PDF» в `halls.html` | `file_name` = `/files/scheme-loft.pdf`, `file_extension` = `pdf` |
 | 5 | `form_start` | авто | расширенная статистика, форма `#booking-form` в `contacts.html` | `form_id` = `booking-form` |
-| 6 | `form_submit` | авто | расширенная статистика, форма `#booking-form` | `form_id` = `booking-form` |
-| 7 | `generate_lead` ★ | рекоменд. | `js/form.js:180`, только после ответа приёмника `{"ok": true}` | `lead_hall` = `cyclorama`, `hours` = 2, `value` = 3520, `currency` = `RUB` |
+| 6 | `form_submit` | авто* | `js/form.js:145` — после успешной проверки полей, перед отправкой | `form_id` = `booking-form`, `form_name` = `booking`, `form_destination` = `script.google.com`, `form_submit_text` = `Забронировать` |
+| 7 | `generate_lead` ★ | рекоменд. | `js/form.js:189`, только после ответа приёмника `{"ok": true}` | `lead_hall` = `cyclorama`, `hours` = 2, `value` = 3520, `currency` = `RUB` |
 | 8 | `cta_click` | своё | `js/analytics.js:65` ← `data-event="cta_click"` в index, halls, equipment, photographers, ideas, contacts, 404 | `button_name` = `hero_book_newyear`, `page_section` = `hero` |
 | 9 | `hall_view` | своё | `js/analytics.js:65` ← карточки залов в `index.html` и `halls.html` | `hall_id` = `loft` |
 | 10 | `slot_select` | своё | `js/booking.js:253` | `hall_id` = `cyclorama`, `slot_date` = `2026-10-19`, `slot_time` = `10:00`, `hours` = 2, `total_price` = 3520 |
@@ -23,11 +23,13 @@
 | 15 | `contact_click` ★ | своё | `js/analytics.js:65` ← телефон в шапке и подвале, e-mail | `contact_type` = `phone` / `email` |
 | 16 | `messenger_click` ★ | своё | `js/analytics.js:65` ← кнопки Telegram и WhatsApp в `contacts.html` | `messenger` = `telegram` / `whatsapp` |
 | 17 | `social_click` | своё | `js/analytics.js:65` ← иконки соцсетей в подвале и на `thanks.html` | `network` = `instagram`, `page_section` = `footer` / `thanks` |
-| 18 | `form_error` | своё | `js/form.js:137` (ошибка поля), `js/form.js:185` (ошибка приёмника) | `field_name` = `phone`, `error_type` = `required` / `format` / `server` |
+| 18 | `form_error` | своё | `js/form.js:137` (ошибка поля), `js/form.js:194` (ошибка приёмника) | `field_name` = `phone`, `error_type` = `required` / `format` / `server` |
 | 19 | `promo_copy` | по выбору | `js/main.js:148` | `promo_code` = `NEWYEAR15` |
 | 20 | `gallery_view` | по выбору | `js/analytics.js:65` ← кадры галереи в `index.html` | `hall_id` = `newyear`, `photo_index` = 3 |
 
 ★ — ключевое событие (Admin → События → Ключевые события).
+
+\* `form_submit` по ТЗ собирает расширенная статистика. Но форма брони отправляется через `fetch`, а обработчик вызывает `preventDefault()`: расширенная статистика считает такую отправку отменённой и событие не шлёт (проверено в Realtime 18.10.2026). Поэтому `form_submit` отправляется из кода с теми же параметрами, что у автоматического.
 
 ## Пользовательские параметры (Admin → Специальные определения)
 
