@@ -1,7 +1,7 @@
 | Что | Ссылка |
 |---|---|
 | Сайт на Vercel | https://tz-14-fotostudiya-kadr35.vercel.app |
-| Таблица заявок «Kadr35 — Bookings» | _будет добавлена на этапе 3_ |
+| Таблица заявок «Kadr35 — Bookings» | https://docs.google.com/spreadsheets/d/1Bzp6WCqNPrF_MocAPSfABBoY0GPIYJEJKyGO_6qOMcc/edit |
 | Отчёт Data Studio «КАДР 35 — newyear_shoot_2026» | _будет добавлен на этапе 5_ |
 | Instagram | _будет добавлен на этапе 4_ |
 | ВКонтакте | _будет добавлен на этапе 4_ |

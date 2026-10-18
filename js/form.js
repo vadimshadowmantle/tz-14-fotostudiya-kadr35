@@ -5,7 +5,7 @@
   'use strict';
 
   // Адрес веб-приложения Apps Script (раздел 6.2), вставляется после публикации приёмника
-  var ENDPOINT = 'https://script.google.com/macros/s/APPS_SCRIPT_ID/exec';
+  var ENDPOINT = 'https://script.google.com/macros/s/AKfycbzprv7LP-1prMvNzjwZF8zwCKMoSMkUPlyrSuj--01xBlwn-Isx6M_G3GgC3A4efbj9/exec';
 
   var UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content'];
   var UTM_DEFAULTS = { utm_source: 'direct', utm_medium: 'none', utm_campaign: 'not_set', utm_content: 'not_set' };
