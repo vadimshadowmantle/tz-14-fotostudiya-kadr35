@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Бронь зала и контакты — фотостудия «Кадр 35»</title>
+  <meta name="description" content="Онлайн-бронь залов фотостудии «Кадр 35»: выберите зал, дату, время и число часов — стоимость с учётом скидок видна сразу. Телефон, Telegram, WhatsApp.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Фотостудия «Кадр 35»">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:title" content="Бронь зала и контакты — фотостудия «Кадр 35»">
+  <meta property="og:description" content="Онлайн-бронь залов фотостудии «Кадр 35»: выберите зал, дату, время и число часов — стоимость с учётом скидок видна сразу. Телефон, Telegram, WhatsApp.">
+  <meta property="og:url" content="https://kadr35.vercel.app/contacts.html">
+  <meta property="og:image" content="https://kadr35.vercel.app/img/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#3D3D9E">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Unbounded:wght@600;700&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/analytics.js" defer></script>
+  <script src="js/form.js" defer></script>
+  <script src="js/main.js" defer></script>
+  <script src="js/booking.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Перейти к содержанию</a>
+<header class="header">
+  <div class="container header__inner">
+    <a class="logo" href="index.html" aria-label="Кадр 35 — на главную">
+      <span class="logo__mark" aria-hidden="true">35</span>
+      <span>КАДР 35</span>
+    </a>
+    <button class="burger" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="nav"><span></span></button>
+    <nav class="nav" id="nav" aria-label="Основное меню">
+      <ul>
+        <li><a href="index.html">Главная</a></li>
+        <li><a href="halls.html">Залы</a></li>
+        <li><a href="equipment.html">Оборудование</a></li>
+        <li><a href="photographers.html">Фотографы</a></li>
+        <li><a href="ideas.html">Идеи</a></li>
+        <li><a href="contacts.html" aria-current="page">Бронь и контакты</a></li>
+      </ul>
+    </nav>
+    <a class="header__phone" href="tel:+79004353535" data-event="contact_click" data-contact-type="phone">+7 (900) 435-35-35</a>
+  </div>
+</header>
+<main id="main">
+  <section class="page-hero">
+    <div class="container">
+      <h1>Бронь и контакты</h1>
+      <p>Выберите зал, дату, время начала и число часов. Занятые часы недоступны, итог посчитается с учётом утренней скидки. Предоплата 50 % — в течение 24 часов после брони.</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="container booking">
+      <div class="panel" id="booking">
+        <div class="step">
+          <h2 class="step-title">1. Зал</h2>
+          <div class="chips" id="hall-chips" role="group" aria-label="Выбор зала">
+            <button class="chip" type="button" data-hall="loft" aria-pressed="false">Лофт<small>1 800 ₽/час</small></button>
+            <button class="chip" type="button" data-hall="cyclorama" aria-pressed="false">Циклорама<small>2 200 ₽/час</small></button>
+            <button class="chip" type="button" data-hall="newyear" aria-pressed="false">Новогодний зал<small>2 500 ₽/час</small></button>
+          </div>
+          <p class="hint" id="hall-hint"></p>
+        </div>
+        <div class="step">
+          <h2 class="step-title">2. Дата</h2>
+          <div class="chips" id="date-chips" role="group" aria-label="Выбор даты"></div>
+        </div>
+        <div class="step">
+          <h2 class="step-title">3. Время начала</h2>
+          <div class="chips" id="time-chips" role="group" aria-label="Выбор времени"></div>
+          <p class="hint">Зачёркнуто — время занято. Скидка 20 % действует в будни с 09:00 до 12:00.</p>
+        </div>
+        <div class="step">
+          <h2 class="step-title">4. Сколько часов</h2>
+          <div class="chips" id="hours-chips" role="group" aria-label="Число часов"></div>
+        </div>
+        <ul class="summary" aria-live="polite">
+          <li><span>Зал</span><span id="sum-hall">—</span></li>
+          <li><span>Дата и время</span><span id="sum-slot">—</span></li>
+          <li><span>Часов</span><span id="sum-hours">—</span></li>
+          <li><span>Скидка</span><span id="sum-discount">—</span></li>
+          <li><span>Итог</span><span class="summary__total" id="sum-total">0 ₽</span></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="panel">
+          <h2 class="step-title">5. Ваши контакты</h2>
+          <form class="form" id="booking-form" novalidate>
+            <div class="field">
+              <label for="f-name">Имя и фамилия</label>
+              <input id="f-name" name="name" type="text" autocomplete="name" maxlength="60" required>
+              <p class="field__error" id="f-name-error"></p>
+            </div>
+            <div class="field">
+              <label for="f-phone">Телефон</label>
+              <input id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="+7 900 000-00-00" required>
+              <p class="field__error" id="f-phone-error"></p>
+            </div>
+            <div class="field">
+              <label for="f-email">E-mail (необязательно)</label>
+              <input id="f-email" name="email" type="email" autocomplete="email" maxlength="100">
+              <p class="field__error" id="f-email-error"></p>
+            </div>
+            <div class="field">
+              <label for="f-hall">Зал</label>
+              <select id="f-hall" name="hall" required>
+                <option value="">Выберите зал слева</option>
+                <option value="loft">Лофт</option>
+                <option value="cyclorama">Циклорама</option>
+                <option value="newyear">Новогодний зал</option>
+              </select>
+              <p class="field__error" id="f-hall-error"></p>
+            </div>
+            <div class="field">
+              <label for="f-slot">Начало брони</label>
+              <input id="f-slot" name="slot" type="text" readonly placeholder="Выберите дату и время слева" required>
+              <p class="field__error" id="f-slot-error"></p>
+            </div>
+            <div class="field">
+              <label for="f-hours">Часов</label>
+              <input id="f-hours" name="hours" type="text" readonly required>
+              <p class="field__error" id="f-hours-error"></p>
+            </div>
+            <div class="field">
+              <label for="f-total">Итог, ₽</label>
+              <input id="f-total" name="total_price" type="text" readonly>
+            </div>
+            <input type="hidden" name="request_id">
+            <input type="hidden" name="utm_source">
+            <input type="hidden" name="utm_medium">
+            <input type="hidden" name="utm_campaign">
+            <input type="hidden" name="utm_content">
+            <label class="form__consent" id="f-consent-wrap">
+              <input id="f-consent" name="consent" type="checkbox">
+              <span>Я согласен(на) на обработку персональных данных в соответствии с <a href="privacy.html" target="_blank">политикой конфиденциальности</a></span>
+            </label>
+            <p class="field__error" id="f-consent-error"></p>
+            <p class="form__status" id="form-status" role="alert"></p>
+            <button class="btn btn--primary" type="submit" data-event="cta_click" data-button-name="form_submit" data-page-section="booking_form">Забронировать</button>
+          </form>
+        </div>
+
+        <div class="panel">
+          <h2 class="step-title">Связаться с нами</h2>
+          <ul class="contacts-list">
+            <li>Телефон: <a href="tel:+79004353535" data-event="contact_click" data-contact-type="phone">+7 (900) 435-35-35</a></li>
+            <li>E-mail: <a href="mailto:book@kadr35.example" data-event="contact_click" data-contact-type="email">book@kadr35.example</a></li>
+            <li>Адрес: г. Новоозёрск, ул. Фабричная, д. 35, лофт «Ткацкий»</li>
+            <li>Ежедневно 09:00–23:00</li>
+          </ul>
+          <div class="messengers">
+            <a class="btn btn--ghost" href="https://t.me/kadr35_admin" target="_blank" rel="noopener" data-event="messenger_click" data-messenger="telegram">Telegram</a>
+            <a class="btn btn--ghost" href="https://wa.me/79004353535" target="_blank" rel="noopener" data-event="messenger_click" data-messenger="whatsapp">WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <a class="logo" href="index.html" aria-label="Кадр 35 — на главную">
+          <span class="logo__mark" aria-hidden="true">35</span>
+          <span>КАДР 35</span>
+        </a>
+        <p>Фотостудия: залы и фотографы.<br>г. Новоозёрск, ул. Фабричная, д. 35, лофт «Ткацкий»</p>
+        <p>Ежедневно 09:00–23:00</p>
+      </div>
+      <div>
+        <h2>Контакты</h2>
+        <ul>
+          <li><a href="tel:+79004353535" data-event="contact_click" data-contact-type="phone">+7 (900) 435-35-35</a></li>
+          <li><a href="mailto:book@kadr35.example" data-event="contact_click" data-contact-type="email">book@kadr35.example</a></li>
+          <li><a href="privacy.html">Политика конфиденциальности</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Мы в соцсетях</h2>
+        <div class="socials">
+        <a class="social" href="https://instagram.com/kadr35_studio" target="_blank" rel="noopener" aria-label="Instagram" data-event="social_click" data-network="instagram" data-page-section="footer">IG</a>
+        <a class="social" href="https://vk.com/kadr35_studio" target="_blank" rel="noopener" aria-label="ВКонтакте" data-event="social_click" data-network="vk" data-page-section="footer">VK</a>
+        <a class="social" href="https://t.me/kadr35_studio" target="_blank" rel="noopener" aria-label="Telegram-канал" data-event="social_click" data-network="telegram" data-page-section="footer">TG</a>
+        <a class="social" href="https://www.youtube.com/@kadr35_studio" target="_blank" rel="noopener" aria-label="YouTube" data-event="social_click" data-network="youtube" data-page-section="footer">YT</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© 2026 ИП Демидов К. А. · ИНН 991403557218 · ОГРНИП 321990000035512</span>
+      <span>Предоплата 50 % в течение 24 часов после брони</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

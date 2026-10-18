@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Оборудование в аренду — фотостудия «Кадр 35»</title>
+  <meta name="description" content="Дополнительный свет, дым-машина и цветные бумажные фоны в фотостудии «Кадр 35». Посчитайте стоимость аренды оборудования онлайн.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Фотостудия «Кадр 35»">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:title" content="Оборудование в аренду — фотостудия «Кадр 35»">
+  <meta property="og:description" content="Дополнительный свет, дым-машина и цветные бумажные фоны в фотостудии «Кадр 35». Посчитайте стоимость аренды оборудования онлайн.">
+  <meta property="og:url" content="https://kadr35.vercel.app/equipment.html">
+  <meta property="og:image" content="https://kadr35.vercel.app/img/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#3D3D9E">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Unbounded:wght@600;700&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/analytics.js" defer></script>
+  <script src="js/form.js" defer></script>
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Перейти к содержанию</a>
+<header class="header">
+  <div class="container header__inner">
+    <a class="logo" href="index.html" aria-label="Кадр 35 — на главную">
+      <span class="logo__mark" aria-hidden="true">35</span>
+      <span>КАДР 35</span>
+    </a>
+    <button class="burger" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="nav"><span></span></button>
+    <nav class="nav" id="nav" aria-label="Основное меню">
+      <ul>
+        <li><a href="index.html">Главная</a></li>
+        <li><a href="halls.html">Залы</a></li>
+        <li><a href="equipment.html" aria-current="page">Оборудование</a></li>
+        <li><a href="photographers.html">Фотографы</a></li>
+        <li><a href="ideas.html">Идеи</a></li>
+        <li><a href="contacts.html">Бронь и контакты</a></li>
+      </ul>
+    </nav>
+    <a class="header__phone" href="tel:+79004353535" data-event="contact_click" data-contact-type="phone">+7 (900) 435-35-35</a>
+  </div>
+</header>
+<main id="main">
+  <section class="page-hero">
+    <div class="container">
+      <h1>Оборудование</h1>
+      <p>Базовый свет и реквизит зала входят в стоимость аренды. Если для задумки нужно больше — добавьте оборудование и посчитайте итог.</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="container grid grid--2">
+      <div>
+        <h2>Список и цены</h2>
+        <table class="price-list">
+          <thead><tr><th scope="col">Оборудование</th><th scope="col">Цена</th></tr></thead>
+          <tbody>
+            <tr><td>Дополнительный источник света</td><td>400 ₽/час</td></tr>
+            <tr><td>Дым-машина</td><td>500 ₽ за сеанс</td></tr>
+            <tr><td>Цветной бумажный фон</td><td>300 ₽</td></tr>
+            <tr><td>Базовый свет и реквизит зала</td><td>входит в аренду</td></tr>
+          </tbody>
+        </table>
+        <img class="card__img" style="border-radius:16px;margin-top:24px" src="img/equipment-studio.webp" alt="Импульсный свет и софтбоксы в зале фотостудии" width="1200" height="800" loading="lazy" decoding="async">
+      </div>
+
+      <div>
+        <h2>Калькулятор</h2>
+        <form class="calc" id="equipment-calc" novalidate>
+          <div class="calc__row">
+            <label for="calc-hours">Часов аренды</label>
+            <div class="stepper" data-stepper>
+              <button type="button" data-step="-1" aria-label="Меньше часов">−</button>
+              <output id="calc-hours-out" for="calc-hours">2</output>
+              <button type="button" data-step="1" aria-label="Больше часов">+</button>
+              <input type="hidden" id="calc-hours" name="hours" value="2" data-min="1" data-max="8">
+            </div>
+          </div>
+          <div class="calc__row">
+            <label for="calc-light">Доп. источники света, 400 ₽/час</label>
+            <div class="stepper" data-stepper>
+              <button type="button" data-step="-1" aria-label="Меньше источников">−</button>
+              <output id="calc-light-out" for="calc-light">0</output>
+              <button type="button" data-step="1" aria-label="Больше источников">+</button>
+              <input type="hidden" id="calc-light" name="light" value="0" data-min="0" data-max="4">
+            </div>
+          </div>
+          <div class="calc__row">
+            <label class="check"><input type="checkbox" name="smoke" id="calc-smoke"> Дым-машина, 500 ₽ за сеанс</label>
+          </div>
+          <div class="calc__row">
+            <label for="calc-paper">Цветные бумажные фоны, 300 ₽</label>
+            <div class="stepper" data-stepper>
+              <button type="button" data-step="-1" aria-label="Меньше фонов">−</button>
+              <output id="calc-paper-out" for="calc-paper">0</output>
+              <button type="button" data-step="1" aria-label="Больше фонов">+</button>
+              <input type="hidden" id="calc-paper" name="paper" value="0" data-min="0" data-max="5">
+            </div>
+          </div>
+          <p class="calc__total">Итого: <span id="calc-total">0</span> ₽</p>
+          <button class="btn btn--primary" type="submit">Рассчитать</button>
+          <p class="hint" id="calc-hint">Стоимость оборудования добавляется к аренде зала. Сообщите администратору, что нужно подготовить, при подтверждении брони.</p>
+          <a class="btn btn--ghost" href="contacts.html" data-event="cta_click" data-button-name="equipment_book" data-page-section="calculator">Забронировать зал</a>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <a class="logo" href="index.html" aria-label="Кадр 35 — на главную">
+          <span class="logo__mark" aria-hidden="true">35</span>
+          <span>КАДР 35</span>
+        </a>
+        <p>Фотостудия: залы и фотографы.<br>г. Новоозёрск, ул. Фабричная, д. 35, лофт «Ткацкий»</p>
+        <p>Ежедневно 09:00–23:00</p>
+      </div>
+      <div>
+        <h2>Контакты</h2>
+        <ul>
+          <li><a href="tel:+79004353535" data-event="contact_click" data-contact-type="phone">+7 (900) 435-35-35</a></li>
+          <li><a href="mailto:book@kadr35.example" data-event="contact_click" data-contact-type="email">book@kadr35.example</a></li>
+          <li><a href="privacy.html">Политика конфиденциальности</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Мы в соцсетях</h2>
+        <div class="socials">
+        <a class="social" href="https://instagram.com/kadr35_studio" target="_blank" rel="noopener" aria-label="Instagram" data-event="social_click" data-network="instagram" data-page-section="footer">IG</a>
+        <a class="social" href="https://vk.com/kadr35_studio" target="_blank" rel="noopener" aria-label="ВКонтакте" data-event="social_click" data-network="vk" data-page-section="footer">VK</a>
+        <a class="social" href="https://t.me/kadr35_studio" target="_blank" rel="noopener" aria-label="Telegram-канал" data-event="social_click" data-network="telegram" data-page-section="footer">TG</a>
+        <a class="social" href="https://www.youtube.com/@kadr35_studio" target="_blank" rel="noopener" aria-label="YouTube" data-event="social_click" data-network="youtube" data-page-section="footer">YT</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© 2026 ИП Демидов К. А. · ИНН 991403557218 · ОГРНИП 321990000035512</span>
+      <span>Предоплата 50 % в течение 24 часов после брони</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

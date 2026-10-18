@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Спасибо за бронь — фотостудия «Кадр 35»</title>
+  <meta name="description" content="Бронь в фотостудии «Кадр 35» принята. Номер брони, зал, время, сумма и как внести предоплату 50 %.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Фотостудия «Кадр 35»">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:title" content="Спасибо за бронь — фотостудия «Кадр 35»">
+  <meta property="og:description" content="Бронь в фотостудии «Кадр 35» принята. Номер брони, зал, время, сумма и как внести предоплату 50 %.">
+  <meta property="og:url" content="https://kadr35.vercel.app/thanks.html">
+  <meta property="og:image" content="https://kadr35.vercel.app/img/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#3D3D9E">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Unbounded:wght@600;700&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/analytics.js" defer></script>
+  <script src="js/form.js" defer></script>
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Перейти к содержанию</a>
+<header class="header">
+  <div class="container header__inner">
+    <a class="logo" href="index.html" aria-label="Кадр 35 — на главную">
+      <span class="logo__mark" aria-hidden="true">35</span>
+      <span>КАДР 35</span>
+    </a>
+    <button class="burger" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="nav"><span></span></button>
+    <nav class="nav" id="nav" aria-label="Основное меню">
+      <ul>
+        <li><a href="index.html">Главная</a></li>
+        <li><a href="halls.html">Залы</a></li>
+        <li><a href="equipment.html">Оборудование</a></li>
+        <li><a href="photographers.html">Фотографы</a></li>
+        <li><a href="ideas.html">Идеи</a></li>
+        <li><a href="contacts.html" aria-current="page">Бронь и контакты</a></li>
+      </ul>
+    </nav>
+    <a class="header__phone" href="tel:+79004353535" data-event="contact_click" data-contact-type="phone">+7 (900) 435-35-35</a>
+  </div>
+</header>
+<main id="main">
+  <section class="center-block">
+    <h1>Спасибо! Бронь принята</h1>
+    <p>Администратор свяжется с вами, чтобы подтвердить бронь.</p>
+    <div class="panel receipt">
+      <ul class="summary">
+        <li><span>Номер брони</span><span id="t-id">—</span></li>
+        <li><span>Зал</span><span id="t-hall">—</span></li>
+        <li><span>Дата и время</span><span id="t-slot">—</span></li>
+        <li><span>Сумма</span><span class="summary__total" id="t-total">—</span></li>
+      </ul>
+    </div>
+    <div class="panel receipt">
+      <h2 class="step-title">Как внести предоплату</h2>
+      <ol class="steps-list">
+        <li>Дождитесь звонка или сообщения администратора с подтверждением брони.</li>
+        <li>Внесите предоплату 50 % от суммы брони <strong>в течение 24 часов</strong> — способ оплаты администратор пришлёт вместе с подтверждением.</li>
+        <li>Если предоплата не поступит в течение 24 часов, бронь снимается и время снова становится свободным.</li>
+      </ol>
+      <p class="hint">Сохраните номер брони — он понадобится, если захотите изменить время.</p>
+    </div>
+    <h2 class="step-title">Следите за нами в соцсетях</h2>
+    <div class="socials" style="justify-content:center">
+        <a class="social" style="background:var(--indigo)" href="https://instagram.com/kadr35_studio" target="_blank" rel="noopener" aria-label="Instagram" data-event="social_click" data-network="instagram" data-page-section="thanks">IG</a>
+        <a class="social" style="background:var(--indigo)" href="https://vk.com/kadr35_studio" target="_blank" rel="noopener" aria-label="ВКонтакте" data-event="social_click" data-network="vk" data-page-section="thanks">VK</a>
+        <a class="social" style="background:var(--indigo)" href="https://t.me/kadr35_studio" target="_blank" rel="noopener" aria-label="Telegram-канал" data-event="social_click" data-network="telegram" data-page-section="thanks">TG</a>
+        <a class="social" style="background:var(--indigo)" href="https://www.youtube.com/@kadr35_studio" target="_blank" rel="noopener" aria-label="YouTube" data-event="social_click" data-network="youtube" data-page-section="thanks">YT</a>
+    </div>
+    <p style="margin-top:32px"><a class="btn btn--ghost" href="index.html">На главную</a></p>
+  </section>
+</main>
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <a class="logo" href="index.html" aria-label="Кадр 35 — на главную">
+          <span class="logo__mark" aria-hidden="true">35</span>
+          <span>КАДР 35</span>
+        </a>
+        <p>Фотостудия: залы и фотографы.<br>г. Новоозёрск, ул. Фабричная, д. 35, лофт «Ткацкий»</p>
+        <p>Ежедневно 09:00–23:00</p>
+      </div>
+      <div>
+        <h2>Контакты</h2>
+        <ul>
+          <li><a href="tel:+79004353535" data-event="contact_click" data-contact-type="phone">+7 (900) 435-35-35</a></li>
+          <li><a href="mailto:book@kadr35.example" data-event="contact_click" data-contact-type="email">book@kadr35.example</a></li>
+          <li><a href="privacy.html">Политика конфиденциальности</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Мы в соцсетях</h2>
+        <div class="socials">
+        <a class="social" href="https://instagram.com/kadr35_studio" target="_blank" rel="noopener" aria-label="Instagram" data-event="social_click" data-network="instagram" data-page-section="footer">IG</a>
+        <a class="social" href="https://vk.com/kadr35_studio" target="_blank" rel="noopener" aria-label="ВКонтакте" data-event="social_click" data-network="vk" data-page-section="footer">VK</a>
+        <a class="social" href="https://t.me/kadr35_studio" target="_blank" rel="noopener" aria-label="Telegram-канал" data-event="social_click" data-network="telegram" data-page-section="footer">TG</a>
+        <a class="social" href="https://www.youtube.com/@kadr35_studio" target="_blank" rel="noopener" aria-label="YouTube" data-event="social_click" data-network="youtube" data-page-section="footer">YT</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© 2026 ИП Демидов К. А. · ИНН 991403557218 · ОГРНИП 321990000035512</span>
+      <span>Предоплата 50 % в течение 24 часов после брони</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
