@@ -227,8 +227,8 @@ function setupCrmImport_(book) {
   var f = {
     A2: '=ARRAYFORMULA(IF(leads!A2:A="","",leads!A2:A))',
     B2: '=ARRAYFORMULA(IF(leads!A2:A="","",IFERROR(INDEX(SPLIT(TRIM(leads!C2:C)," "),0,1),"")))',
-    C2: '=ARRAYFORMULA(IF(leads!A2:A="","",IFERROR(REGEXREPLACE(TRIM(leads!C2:C),"^\S+\s*",""),"")))',
-    D2: '=ARRAYFORMULA(IF(leads!A2:A="","","+7"&RIGHT(REGEXREPLACE(TO_TEXT(leads!D2:D),"\D",""),10)))',
+    C2: '=ARRAYFORMULA(IF(leads!A2:A="","",IFERROR(REGEXREPLACE(TRIM(leads!C2:C),"^\\S+\\s*",""),"")))',
+    D2: '=ARRAYFORMULA(IF(leads!A2:A="","","+7"&RIGHT(REGEXREPLACE(TO_TEXT(leads!D2:D),"\\D",""),10)))',
     E2: '=ARRAYFORMULA(IF(leads!A2:A="","",TRIM(leads!E2:E)))',
     F2: '=ARRAYFORMULA(IF(leads!A2:A="","",leads!F2:F))',
     G2: '=ARRAYFORMULA(IF(leads!A2:A="","",TEXT(leads!G2:G,"yyyy-mm-dd hh:mm")))',
