@@ -178,16 +178,38 @@ function setupSheet() {
   var data = sheet.getRange('A2:M');
   var rules = [
     SpreadsheetApp.newConditionalFormatRule()
-      .whenFormulaSatisfied('=AND(COUNTA($A2:$M2)>0,COUNTIF($A$2:$A,$A2)>1)')
+      .whenFormulaSatisfied(localize_('=AND(COUNTA($A2:$M2)>0,COUNTIF($A$2:$A,$A2)>1)', book))
       .setBackground('#F4C7C3').setRanges([sheet.getRange('A2:A')]).build(),
     SpreadsheetApp.newConditionalFormatRule()
-      .whenFormulaSatisfied('=AND(COUNTA($A2:$M2)>0,A2="",COLUMN(A2)<>5)')
+      .whenFormulaSatisfied(localize_('=AND(COUNTA($A2:$M2)>0,A2="",COLUMN(A2)<>5)', book))
       .setBackground('#FCE8B2').setRanges([data]).build()
   ];
   sheet.setConditionalFormatRules(rules);
 
   setupCrmImport_(book);
   SpreadsheetApp.flush();
+}
+
+/**
+ * Формулы в коде записаны в английском синтаксисе (разделитель — запятая).
+ * В таблице с русской локалью setFormula ждёт «;» между аргументами и «\» между
+ * столбцами массива {…}, поэтому переводим формулу под локаль таблицы.
+ */
+function localize_(formula, book) {
+  var locale = book.getSpreadsheetLocale() || 'en_US';
+  if (/^(en|ja|zh|ko|th|he|hi)/.test(locale)) return formula; // десятичная точка — запятые остаются
+  var out = '', inQuotes = false, braces = 0;
+  for (var i = 0; i < formula.length; i++) {
+    var c = formula[i];
+    if (c === '"') inQuotes = !inQuotes;
+    if (!inQuotes) {
+      if (c === '{') braces++;
+      if (c === '}') braces--;
+      if (c === ',') c = braces > 0 ? '\' : ';';
+    }
+    out += c;
+  }
+  return out;
 }
 
 /** Лист crm_import для импорта в HubSpot (раздел 6.4 ТЗ). */
@@ -199,7 +221,7 @@ function setupCrmImport_(book) {
   crm.getRange(1, 1, 1, headers.length).setValues([headers]).setFontWeight('bold');
   crm.setFrozenRows(1);
 
-  // Формулы задаются в английском синтаксисе (запятые), таблица покажет их по-русски
+  // Формулы в английском синтаксисе; localize_() переводит их под локаль таблицы
   var stages = '{"new","New lead";"confirmed","Confirmed";"prepaid","Prepaid";"done","Closed won";"cancelled","Closed lost"}';
   var halls = '{"loft","Лофт";"cyclorama","Циклорама";"newyear","Новогодний зал"}';
   var f = {
@@ -216,5 +238,5 @@ function setupCrmImport_(book) {
     N2: '=ARRAYFORMULA(IF(leads!A2:A="","",IFERROR(VLOOKUP(leads!M2:M,' + stages + ',2,FALSE),"New lead")))',
     O2: '=ARRAYFORMULA(IF(leads!A2:A="","",TRIM(leads!C2:C)&" — "&IFERROR(VLOOKUP(leads!F2:F,' + halls + ',2,FALSE),leads!F2:F)&" — "&TEXT(leads!G2:G,"dd.mm.yyyy hh:mm")))'
   };
-  Object.keys(f).forEach(function (cell) { crm.getRange(cell).setFormula(f[cell]); });
+  Object.keys(f).forEach(function (cell) { crm.getRange(cell).setFormula(localize_(f[cell], book)); });
 }
