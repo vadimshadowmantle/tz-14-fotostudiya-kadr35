@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Кадр 35 — защита курсовой</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Unbounded:wght@600&display=block" rel="stylesheet">
+<style>
+  @page { size: 1280px 720px; margin: 0; }
+  :root {
+    --indigo: #3D3D9E; --indigo-dark: #2E2E7A; --white: #F8F6F2; --graphite: #1E1E24;
+    --accent: #F2C14E; --muted: #5B5B66; --line: #E4E0D8;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: #ccc; }
+  body { font-family: "Inter", "Segoe UI", Arial, sans-serif; color: var(--graphite); }
+  .slide {
+    width: 1280px; height: 720px; position: relative; overflow: hidden;
+    background: var(--white); padding: 56px 72px; page-break-after: always; break-after: page;
+    display: flex; flex-direction: column;
+  }
+  .slide:last-child { page-break-after: auto; break-after: auto; }
+  h1, h2 { font-family: "Unbounded", "Segoe UI", Arial, sans-serif; font-weight: 600; margin: 0; }
+  h2 { font-size: 40px; line-height: 1.2; margin-bottom: 28px; }
+  p, li, td, th { font-size: 24px; line-height: 1.45; }
+  .num { position: absolute; right: 40px; bottom: 28px; font-size: 20px; color: var(--muted); }
+  .brand { position: absolute; left: 72px; bottom: 28px; font-size: 20px; color: var(--muted); }
+  .logo { display: inline-grid; place-items: center; width: 56px; height: 56px; border-radius: 14px;
+          background: var(--indigo); color: var(--accent); font-family: "Unbounded", sans-serif; font-size: 24px; }
+  .row { display: flex; gap: 28px; align-items: flex-start; flex: 1; min-height: 0; }
+  .col { flex: 1; min-width: 0; }
+  .shot { border-radius: 14px; box-shadow: 0 6px 24px rgba(30,30,36,.15); background: #fff; display: block; }
+  .tall { height: 470px; width: auto; }
+  .accent { color: var(--indigo); }
+  .big { font-family: "Unbounded", sans-serif; font-size: 44px; color: var(--indigo); line-height: 1.1; }
+  .stat p { margin: 4px 0 26px; color: var(--muted); font-size: 22px; }
+  ul { margin: 0; padding-left: 28px; }
+  li { margin-bottom: 12px; }
+  table { border-collapse: collapse; width: 100%; }
+  th, td { text-align: left; padding: 12px 16px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; font-size: 22px; }
+  .arrow { font-size: 36px; color: var(--indigo); align-self: center; }
+  .note { font-size: 20px; color: var(--muted); margin-top: 16px; }
+  code { font-family: Consolas, monospace; font-size: .9em; background: #ECEAF6; padding: 1px 6px; border-radius: 6px; }
+
+  /* титул */
+  .title { padding: 0; color: #fff; justify-content: flex-end;
+           background: linear-gradient(rgba(30,30,36,.55), rgba(30,30,36,.85)), url("../img/hall-newyear-1.webp") center/cover; }
+  .title .inner { padding: 64px 72px; }
+  .title h1 { font-size: 46px; line-height: 1.2; margin: 24px 0 28px; max-width: 1000px; }
+  .title p { font-size: 24px; margin: 4px 0; color: #eceaf6; }
+  .title .num, .title .brand { color: #cfcde0; }
+  .title .tag { display: inline-block; background: var(--accent); color: var(--graphite); border-radius: 999px; padding: 6px 18px; font-size: 20px; font-weight: 600; }
+</style>
+</head>
+<body>
+
+<!-- 1. Титул -->
+<section class="slide title">
+  <div class="inner">
+    <span class="logo">35</span>
+    <h1>Сайт бронирования залов и сквозная аналитика заявок для фотостудии «Кадр 35»</h1>
+    <p><span class="tag">ТЗ № ТЗ-14/2026 · ОП.03 «Информационные технологии»</span></p>
+    <p style="margin-top:20px">Бурмистров Вадим Александрович, группа 11/1-РПО-26/1</p>
+  </div>
+  <span class="num">1</span>
+</section>
+
+<!-- 2. Проблема -->
+<section class="slide">
+  <h2>Проблема заказчика</h2>
+  <div class="row">
+    <div class="col stat">
+      <div class="big">2</div><p>двойные брони одного зала в сентябре 2026</p>
+      <div class="big">≈ 60</div><p>вопросов о свободном времени — ответ позже чем через час</p>
+    </div>
+    <div class="col stat">
+      <div class="big">30 000 ₽</div><p>в месяц на продвижение, но неизвестно, какой канал приводит брони</p>
+      <div class="big">94 %</div><p>часов Новогоднего зала было занято в декабре 2025</p>
+    </div>
+  </div>
+  <p class="note">Брони — в календаре администратора, заявки — в Instagram, Telegram и по телефону.</p>
+  <span class="brand">Кадр 35</span><span class="num">2</span>
+</section>
+
+<!-- 3. Схема -->
+<section class="slide">
+  <h2>Схема решения</h2>
+  <div class="row" style="justify-content:center">
+    <img class="shot" src="../docs/scheme.png" style="height:500px" alt="Схема работы">
+  </div>
+  <span class="brand">Кадр 35</span><span class="num">3</span>
+</section>
+
+<!-- 4. Сайт -->
+<section class="slide">
+  <h2>Сайт</h2>
+  <div class="row">
+    <img class="shot" src="../screens/kursovaya/01-site-home.png" style="width:560px" alt="Главная">
+    <img class="shot" src="../screens/kursovaya/02-site-mobile.png" style="height:470px" alt="Телефон">
+    <div class="col">
+      <ul>
+        <li><b>9 страниц</b> + 404</li>
+        <li>Vercel, автодеплой из <code>main</code></li>
+        <li>Lighthouse (телефон): производительность <b class="accent">83</b>, доступность <b class="accent">100</b>, SEO <b class="accent">100</b></li>
+        <li>создан с помощью Claude Code</li>
+      </ul>
+    </div>
+  </div>
+  <span class="brand">Кадр 35</span><span class="num">4</span>
+</section>
+
+<!-- 5. Расчёт брони -->
+<section class="slide">
+  <h2>Бронь: свободные часы и цена сразу</h2>
+  <div class="row">
+    <img class="shot" src="../screens/kursovaya/04-form.png" style="height:480px" alt="Расчёт брони">
+    <div class="col">
+      <ul>
+        <li>занятые часы выбрать нельзя</li>
+        <li>скидка 20 % в будни 09:00–12:00</li>
+        <li>Циклорама, будний день, 10:00, 2 ч:<br><b class="accent">2 × 2 200 × 0,8 = 3 520 ₽</b></li>
+        <li>Новогодний зал — только 01.12–10.01</li>
+      </ul>
+    </div>
+  </div>
+  <span class="brand">Кадр 35</span><span class="num">5</span>
+</section>
+
+<!-- 6. Путь заявки -->
+<section class="slide">
+  <h2>Путь заявки: источник не теряется</h2>
+  <div class="row" style="align-items:center">
+    <div class="col">
+      <img class="shot" src="../screens/instagram/ideas-05-page-utm.png" style="width:100%" alt="Адрес с метками">
+      <p class="note">ссылка с UTM-метками</p>
+    </div>
+    <span class="arrow">→</span>
+    <div class="col" style="flex:1.6">
+      <img class="shot" src="../screens/kursovaya/05-lead-in-sheet.png" style="width:100%" alt="Строка в таблице">
+      <p class="note">строка в листе <code>leads</code> с метками</p>
+    </div>
+    <span class="arrow">→</span>
+    <div>
+      <img class="shot" src="../screens/instagram/family-07-ga4-generate-lead.png" style="height:420px" alt="generate_lead">
+      <p class="note"><code>generate_lead</code> в Realtime</p>
+    </div>
+  </div>
+  <span class="brand">Кадр 35</span><span class="num">6</span>
+</section>
+
+<!-- 7. Instagram -->
+<section class="slide">
+  <h2>Instagram → сайт</h2>
+  <div class="row">
+    <img class="shot tall" src="../screens/instagram/ideas-03-comment.png" alt="Комментарий">
+    <img class="shot tall" src="../screens/instagram/ideas-04-dm.png" alt="Direct">
+    <div class="col">
+      <ul>
+        <li>ManyChat отвечает в комментариях и в Direct</li>
+        <li>«ИДЕИ» → <code>ideas.html</code></li>
+        <li>«СЕМЬЯ» → <code>photographers.html#family</code></li>
+        <li>ссылки кнопок — из реестра (U-02, U-03)</li>
+      </ul>
+    </div>
+  </div>
+  <span class="brand">Кадр 35</span><span class="num">7</span>
+</section>
+
+<!-- 8. GA4 -->
+<section class="slide">
+  <h2>GA4: события и параметры</h2>
+  <div class="row">
+    <img class="shot tall" src="../screens/ga4/generate_lead.png" alt="DebugView">
+    <div class="col">
+      <ul>
+        <li><b>20 событий</b>, своих — 14, все в <code>js/analytics.js</code></li>
+        <li><b>7</b> пользовательских параметров</li>
+        <li>ключевые: <code>generate_lead</code>, <code>contact_click</code>, <code>messenger_click</code></li>
+        <li><code>generate_lead</code> — только после ответа <code>{"ok": true}</code></li>
+      </ul>
+      <img class="shot" src="../screens/kursovaya/03-custom-definitions.png" style="height:250px;margin-top:12px" alt="Параметры">
+    </div>
+  </div>
+  <span class="brand">Кадр 35</span><span class="num">8</span>
+</section>
+
+<!-- 9. UTM -->
+<section class="slide">
+  <h2>UTM-ссылки и публикации</h2>
+  <div class="row">
+    <div class="col" style="flex:1.7">
+      <img class="shot" src="../screens/utm/registry.png" style="width:100%" alt="Реестр">
+      <ul style="margin-top:24px">
+        <li><b>12</b> ссылок в реестре, опубликовано <b>8</b>: Instagram, ВКонтакте, Telegram</li>
+        <li>QR-код U-12 на афише</li>
+      </ul>
+    </div>
+    <img class="shot tall" src="../screens/vk/u-05-post.png" alt="Пост ВКонтакте">
+  </div>
+  <span class="brand">Кадр 35</span><span class="num">9</span>
+</section>
+
+<!-- 10. Заявки по каналам -->
+<section class="slide">
+  <h2>Заявки по каналам (18–20.10.2026)</h2>
+  <table>
+    <tr><th>Источник</th><th>Заявок</th><th>Откуда</th></tr>
+    <tr><td><b>instagram</b></td><td>4</td><td>3 — автоответы ManyChat, 1 — проверка приёмника</td></tr>
+    <tr><td><b>vk</b></td><td>2</td><td>по одной с каждого поста</td></tr>
+    <tr><td><b>direct</b></td><td>4</td><td>проверки формы без меток</td></tr>
+    <tr><td><b>Всего</b></td><td><b>10</b></td><td>статусы: new — 8, done — 1, cancelled — 1</td></tr>
+  </table>
+  <p class="note">Заявки тестовые: они доказывают, что метки каждого канала доходят до таблицы.</p>
+  <span class="brand">Кадр 35</span><span class="num">10</span>
+</section>
+
+<!-- 11. Что получил бизнес -->
+<section class="slide">
+  <h2>Что получил бизнес</h2>
+  <table>
+    <tr><th>Было</th><th>Стало</th></tr>
+    <tr><td>свободные часы сверяют вручную</td><td>на сайте видно свободное время, занятое не выбрать</td></tr>
+    <tr><td>ответ о цене — больше часа</td><td>итог со скидкой виден до отправки</td></tr>
+    <tr><td>заявки в разных местах</td><td>все брони в одной таблице со статусом</td></tr>
+    <tr><td>30 000 ₽ без понимания отдачи</td><td>у каждой брони есть канал, кампания и пост</td></tr>
+  </table>
+  <p class="note">Рекомендация: месяц собирать заявки с метками, затем перенести бюджет в канал с наибольшим числом броней <code>done</code>.</p>
+  <span class="brand">Кадр 35</span><span class="num">11</span>
+</section>
+
+<!-- 12. ИИ, сложности, ссылки -->
+<section class="slide">
+  <h2>ИИ, сложности и ссылки</h2>
+  <div class="row">
+    <div class="col">
+      <p><b>ИИ (Claude Code):</b> код сайта и Apps Script, тексты, схемы, описание и презентация. Запросы — в <code>docs/prompts.md</code>.</p>
+      <p><b>Сложно:</b> блокировки Instagram и ManyChat, события GA4 с телефона через VPN не доходили.</p>
+      <p><b>Не сделано:</b> отчёты GA4, записка, дашборд DataLens, YouTube и партнёры.</p>
+    </div>
+    <div style="width:330px; text-align:center">
+      <img src="qr-repo.png" style="width:250px" alt="QR на репозиторий">
+      <p class="note" style="margin-top:6px">github.com/vadimshadowmantle/<br>tz-14-fotostudiya-kadr35</p>
+      <p class="note" style="margin-top:6px">tz-14-fotostudiya-kadr35.vercel.app</p>
+    </div>
+  </div>
+  <span class="brand">Кадр 35</span><span class="num">12</span>
+</section>
+
+</body>
+</html>

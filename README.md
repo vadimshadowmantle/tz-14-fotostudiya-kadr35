@@ -13,9 +13,11 @@
 |---|---|
 | Сайт | https://tz-14-fotostudiya-kadr35.vercel.app |
 | Таблица заявок | https://docs.google.com/spreadsheets/d/1Bzp6WCqNPrF_MocAPSfABBoY0GPIYJEJKyGO_6qOMcc/edit |
-| Дашборд DataLens | _этап 5_ |
-| Instagram и Reel с автоответом | _этап 4_ |
-| ВКонтакте · Telegram · YouTube | _этап 4_ |
+| Дашборд DataLens | не сделан |
+| Instagram и Reel с автоответом | https://www.instagram.com/stepan.1.stepanish/ (Reel — первая публикация профиля) |
+| ВКонтакте | https://vk.ru/wall-242456076_1 · https://vk.ru/wall-242456355_1 |
+| Telegram | https://t.me/kadr35_studio |
+| YouTube | не опубликовано |
 | Описание работы | [docs/opisanie.md](docs/opisanie.md) |
 | Презентация к защите | [presentation/zashchita.pdf](presentation/zashchita.pdf) |
 
@@ -27,10 +29,10 @@
 |---|---|
 | Сайт | 9 страниц и 404, статический HTML/CSS/JS без сборки, Vercel с автодеплоем из `main`, Lighthouse (мобильный): Performance 83 / Accessibility 100 / SEO 100 |
 | GA4 | 20 событий (6 автоматических, 14 своих), 7 пользовательских параметров, ключевые: `generate_lead`, `contact_click`, `messenger_click` |
-| UTM | 12 ссылок в реестре (лист `utm`, `docs/utm.csv`, полная ссылка — формулой СЦЕПИТЬ), QR-код `docs/qr-u-12.png` на афише `docs/afisha.pdf`; публикации — _этап 4_ |
+| UTM | 12 ссылок в реестре (лист `utm`, `docs/utm.csv`, полная ссылка — формулой СЦЕПИТЬ), QR-код `docs/qr-u-12.png` на афише `docs/afisha.pdf`; опубликованы 8: Instagram, ВКонтакте, Telegram |
 | Заявки | форма → Apps Script → лист `leads`: проверка полей, защита от повторов по `request_id`, статус брони `new → confirmed → prepaid → done / cancelled` |
-| Instagram | ManyChat, две ветки: `ИДЕИ` и `СЕМЬЯ` — _этап 4_ |
-| Отчёты | Reports, Explore, воронка, путь, дашборд DataLens — _этап 5_ |
+| Instagram | ManyChat, две ветки: `ИДЕИ` → `ideas.html`, `СЕМЬЯ` → `photographers.html#family`; обе проверены до строки в таблице и `generate_lead` |
+| Отчёты | не сделаны: Reports, Explore, записка `docs/report.md`, дашборд DataLens |
 
 ## Технологии
 
@@ -56,4 +58,6 @@ presentation/        презентация к защите
 
 ## Итог
 
-Не получилось: ___
+Не получилось: отчёты и исследования GA4, атрибуция и оповещение, аналитическая записка, дашборд DataLens; публикации на YouTube и у партнёров (U-09…U-11); в Telegram вместо канала — группа (согласовано с преподавателем).
+
+Нейросеть использовалась для: кода сайта и Apps Script, текстов по сведениям из ТЗ, схем, описания работы и презентации; все запросы — в [docs/prompts.md](docs/prompts.md).

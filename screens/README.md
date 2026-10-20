@@ -6,7 +6,8 @@
 |---|---|---|
 | `ga4/` | DebugView по каждому событию с раскрытыми параметрами: `page_view.png`, `cta_click.png`, `hall_view.png`, `slot_select.png`, `generate_lead.png` и т. д. (20 событий из `docs/events.md`) | 4.6 |
 | `utm/` | адресная строка с метками для каждой строки реестра (`u-01.png` … `u-12.png`), Realtime с источником, `traffic-acquisition.png`, переход по короткой ссылке VK/Telegram | 5.3, 5.5 |
-| `instagram/` | комментарий и ответ, сообщение в Direct с кнопкой, открытая страница с метками, заявка в таблице, `generate_lead` в Realtime — для веток ИДЕИ и СЕМЬЯ | 7.2 |
+| `instagram/` | `ideas-*` и `family-*`: комментарий и ответ, сообщение в Direct с кнопкой, открытая страница с метками, заявка в таблице, `generate_lead` в Realtime; `u-01-bio.png`, `u-04-stories.png` — ссылки в профиле и сторис | 7.2, 5.4 |
+| `vk/`, `telegram/` | посты со ссылками U-05…U-08 и заявки из ВКонтакте в таблице | 5.4, 5.5 |
 | `reports/` | `snapshot.png`, `user-acquisition.png`, `traffic-campaign.png`, `traffic-content.png`, `landing-source.png`, `pages.png`, `events.png`, `key-events.png`, `tech.png`, `comparison.png`, `library.png`, `attribution-paths.png`, `custom-insight.png` | 8.1, 8.3 |
 | `explore/` | свободная форма (2 вкладки), воронка открытая/закрытая/по устройствам, воронка со временем, путь, обратный путь — со значком качества данных | 8.2 |
 | `datalens/` | три вкладки дашборда: трафик, заявки, кампании; фильтр периода | 8.4 |
