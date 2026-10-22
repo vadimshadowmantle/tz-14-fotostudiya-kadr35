@@ -203,15 +203,19 @@
 
 <!-- 10. Заявки по каналам -->
 <section class="slide">
-  <h2>Заявки по каналам (18–20.10.2026)</h2>
-  <table>
-    <tr><th>Источник</th><th>Заявок</th><th>Откуда</th></tr>
-    <tr><td><b>instagram</b></td><td>4</td><td>3 — автоответы ManyChat, 1 — проверка приёмника</td></tr>
-    <tr><td><b>vk</b></td><td>2</td><td>по одной с каждого поста</td></tr>
-    <tr><td><b>direct</b></td><td>4</td><td>проверки формы без меток</td></tr>
-    <tr><td><b>Всего</b></td><td><b>10</b></td><td>статусы: new — 8, done — 1, cancelled — 1</td></tr>
-  </table>
-  <p class="note">Заявки тестовые: они доказывают, что метки каждого канала доходят до таблицы.</p>
+  <h2>Воронка (18–22.10.2026)</h2>
+  <div class="row">
+    <img class="shot" src="../screens/explore/funnel-device.png" style="height:470px" alt="Воронка по устройствам">
+    <div class="col">
+      <ul>
+        <li>page_view → hall_view → cta_click → form_start → generate_lead</li>
+        <li>наибольшая потеря — на первом шаге: <b class="accent">90 %</b> не открывают карточку зала</li>
+        <li>до заявки дошли: телефон <b>0 %</b>, компьютер <b>14 %</b></li>
+        <li>Instagram вовлечённее прямых заходов: <b>67 %</b> против <b>45 %</b></li>
+      </ul>
+      <p class="note">Гипотеза: кнопка «Выбрать зал и время» на первом экране для телефона.</p>
+    </div>
+  </div>
   <span class="brand">Кадр 35</span><span class="num">10</span>
 </section>
 
@@ -234,9 +238,9 @@
   <h2>ИИ, сложности и ссылки</h2>
   <div class="row">
     <div class="col">
-      <p><b>ИИ (Claude Code):</b> код сайта и Apps Script, тексты, схемы, описание и презентация. Запросы — в <code>docs/prompts.md</code>.</p>
+      <p><b>ИИ (Claude Code):</b> код сайта и Apps Script, тексты, схемы, описание, записка, презентация, настройка отчётов GA4. Запросы — в <code>docs/prompts.md</code>.</p>
       <p><b>Сложно:</b> блокировки Instagram и ManyChat, события GA4 с телефона через VPN не доходили.</p>
-      <p><b>Не сделано:</b> отчёты GA4, записка, дашборд DataLens, YouTube и партнёры.</p>
+      <p><b>Не сделано:</b> дашборд DataLens, YouTube и партнёры.</p>
     </div>
     <div style="width:330px; text-align:center">
       <img src="qr-repo.png" style="width:250px" alt="QR на репозиторий">
